@@ -3,20 +3,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
+.jen {
+  width: 300px;
+  height: 120px;
+  margin-bottom: 4px;
+
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.h2 {
+  margin-top: 0px;
+  margin-left: 11px;
+  line-height: 0;
+
+  color: black;
+  font-family: "ZTB";
+  font-size: 19px;
 }
 
-.title a:hover, .title a:focus, .title a:active {
-  text-decoration: underline;
+.section {
+  margin-top: 550px;
 }

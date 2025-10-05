@@ -1,54 +1,31 @@
-/* === Conteneur global === */
+/* === Conteneur principal === */
 .container {
-    top: 60px;
     display: flex;
-    flex-direction: row;
-    /* 🔹 texte au-dessus des planètes */
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    /* 🔹 espace entre le texte et les planètes */
+    align-items: center;
+    gap: 40px;
+    /* espace entre les planètes */
     width: 100%;
-    padding: 20px 10px;
+    padding: 30px 10px;
     background-color: #000;
-    /* fond noir global */
     position: relative;
     z-index: 10;
 }
 
-/* === Bloc du texte principal === */
-.textZone {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.textZone h2 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-}
-
-.textZone p {
-    font-size: 0.9rem;
-    color: #aaa;
-    font-style: italic;
-}
-
-
-
 /* === Bloc planète === */
 .imageWrap {
     position: relative;
-    width: 90px;
+    width: 100px;
+    /* taille identique */
     height: 90px;
-    border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 .imageWrap:hover {
-    transform: scale(1.2);
+    transform: scale(1.18);
 }
 
 /* === Image === */
@@ -57,37 +34,44 @@
     height: 100%;
     object-fit: contain;
     background-color: #000;
-    border-radius: 50%;
 }
 
 /* === Overlay (titre + sous-titre au survol) === */
 .overlay {
     position: absolute;
     inset: 0;
+    /* couvre toute la planète */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.75);
+    /* voile discret */
     opacity: 0;
-    transition: opacity 0.4s ease;
+    /* caché par défaut */
+    transition: opacity 0.35s ease;
     border-radius: 50%;
+    /* reste circulaire */
+    pointer-events: none;
+    /* n’empêche pas le hover */
 }
 
+/* Apparition fluide du texte au survol */
 .imageWrap:hover .overlay {
     opacity: 1;
 }
 
-/* === Titre et sous-titre (au survol) === */
+/* === Titre === */
 .title {
-    font-size: 0.55rem;
-    font-weight: 500;
+    font-size: 0.6rem;
+    font-weight: 600;
     color: #fff;
     margin: 0;
     text-align: center;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
+/* === Sous-titre === */
 .subtitle {
     font-size: 0.45rem;
     font-style: italic;
@@ -99,20 +83,50 @@
 
 /* === Responsive === */
 @media (max-width: 768px) {
-    .planetRow {
-        gap: 20px;
+    .container {
+        gap: 28px;
+        padding: 24px 8px;
     }
 
     .imageWrap {
-        width: 70px;
-        height: 70px;
+        width: 74px;
+        height: 74px;
     }
 
     .title {
-        font-size: 0.45rem;
+        font-size: 0.52rem;
     }
 
     .subtitle {
-        font-size: 0.35rem;
+        font-size: 0.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        gap: 20px;
+        padding: 18px 6px;
+    }
+
+    .imageWrap {
+        width: 64px;
+        height: 64px;
+    }
+
+    .title {
+        font-size: 0.48rem;
+    }
+
+    .subtitle {
+        font-size: 0.38rem;
+    }
+}
+
+/* Accessibilité : moins d’animation si demandé par l’utilisateur */
+@media (prefers-reduced-motion: reduce) {
+
+    .imageWrap,
+    .overlay {
+        transition: none;
     }
 }

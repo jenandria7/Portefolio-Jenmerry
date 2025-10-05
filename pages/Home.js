@@ -63,7 +63,7 @@ export default function Home() {
           </h2>
         </section>
 
-        <div style={{ background: "transparent", minHeight: "60vh" }}>
+        <div className={styles.images}>
           <Menu />
         </div>
       </main>

@@ -1,4 +1,3 @@
-// === 1) IMPORTS ===
 import Image from "next/image";
 import styles from "../styles/Menu.module.css";
 

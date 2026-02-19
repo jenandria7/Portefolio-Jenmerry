@@ -1,3 +1,11 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+
 body {
   padding: 0;
   margin: 0;
@@ -12,10 +20,32 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Apple";
+  src: url("/fonts/AppleGaramond-LightItalic.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 
+:root {
+  /* unité fluide stable (mieux que vmin sur ultra-wide) */
+  --u: clamp(8px, calc((1vw + 1vh)/2), 22px);
 
+  /* échelles réutilisables */
+  --gap: clamp(10px, 1.6*var(--u), 28px);
+  --fs-xs: clamp(10px, 1.3*var(--u), 13px);
+  --fs-sm: clamp(12px, 1.6*var(--u), 16px);
+  --fs-md: clamp(14px, 2.2*var(--u), 22px);
+  --fs-lg: clamp(18px, 3.2*var(--u), 40px);
+}
 
-/* --- Règle globale --- */
+/* reset utile */
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
 }

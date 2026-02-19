@@ -1,0 +1,46 @@
+.container {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 390px;
+  font-family: ZTB;
+}
+
+.moodOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.body {
+  padding: 10px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  align-items: center;
+  font-family: ZTB;
+}
+
+.label {
+  margin: 10px;
+  text-align: center;
+}
+
+.button {
+  margin-bottom: 35px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: 300;
+  font-size: 13px;
+  cursor: pointer;
+}

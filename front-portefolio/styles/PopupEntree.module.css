@@ -1,10 +1,12 @@
 .container {
   color: black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-self: center;
   width: 390px;
   font-family: ZTB;
+  border: 1px solid aliceblue;
 }
 
 .moodOptions {
@@ -22,6 +24,7 @@
 
 .input {
   padding: 10px;
+  margin: 5px;
   border-radius: 6px;
   border: 1px solid #ccc;
   align-items: center;
@@ -31,6 +34,7 @@
 .label {
   margin: 10px;
   text-align: center;
+  font-weight: 700;
 }
 
 .button {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import styles from "../styles/PopupEntree.module.css";
@@ -7,11 +7,22 @@ export default function PopupEntree({ onMusicSelected }) {
   const [open, setOpen] = useState(false);
   const [artist, setArtist] = useState("");
   const [title, setTitle] = useState("");
+  const didRun = useRef(false);
 
   useEffect(() => {
-    setOpen(true);
+    if (didRun.current) return;
+    didRun.current = true;
+
+    if (typeof window === "undefined") return;
+
+    const seen = sessionStorage.getItem("popupSeenSession");
+    if (!seen) setOpen(true);
   }, []);
 
+  const handleClose = () => {
+    setOpen(false);
+    sessionStorage.setItem("popupSeenSession", "true");
+  };
   const handleSubmit = async () => {
     const query = `${artist} ${title}`.trim();
     if (!query) return;
@@ -43,7 +54,7 @@ export default function PopupEntree({ onMusicSelected }) {
 
       if (videoId) {
         onMusicSelected(videoId);
-        setOpen(false);
+        handleClose();
       } else {
         alert("Aucune musique trouvée (0 résultat). Regarde la console.");
       }
@@ -57,6 +68,7 @@ export default function PopupEntree({ onMusicSelected }) {
     <Popup
       open={open}
       closeOnDocumentClick={false}
+      onClose={handleClose}
       contentStyle={{
         display: "flex",
         justifyContent: "center",

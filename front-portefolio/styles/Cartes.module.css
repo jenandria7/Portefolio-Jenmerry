@@ -1,48 +1,49 @@
 .card {
-    position: relative;
-    width: 340px;
-    /* taille visible */
-    height: 500px;
-    /* taille visible */
-    transform-style: preserve-3d;
-    transition: transform .8s ease-in-out;
-    cursor: pointer;
-    user-select: none;
-    background-color: black
+  width: 280px;
+  height: 450px;
+  position: relative; /* IMPORTANT */
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+  background-color: black;
 }
 
-
 .isFlipped {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .face {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-
+  position: absolute;
+  inset: 0;
+  width: 95%;
+  height: 100%;
+  backface-visibility: hidden;
 }
 
+/* FRONT */
+.front {
+  /* rien ici: la taille vient de .face */
+}
 
 .front img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
+/* BACK */
 .back {
-    background: white;
-    font-family: "Apple";
-    transform: rotateY(180deg);
-    overflow-y: auto;
-    padding: 15px 20px;
-    margin: 10px 0px;
-    border-radius: 4%;
-    justify-content: center;
-    align-items: center;
-    text-align: justify;
-    scrollbar-width: none;
-    font-size: 14px;
-    border: 3px solid rgb(240, 202, 34)
+  transform: rotateY(180deg);
+  background: white;
+  font-family: "Apple";
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 4%;
+  text-align: justify;
+  scrollbar-width: none;
+  font-size: 14px;
+  border: 3px solid rgb(240, 202, 34);
+  box-sizing: border-box; /* IMPORTANT */
 }

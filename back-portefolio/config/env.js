@@ -8,6 +8,6 @@ function required(name) {
 }
 
 export const env = {
-  port: Number(process.env.PORT || 3001),
+  port: Number(process.env.PORT || 3002),
   ytApiKey: required("YT_API_KEY"),
 };

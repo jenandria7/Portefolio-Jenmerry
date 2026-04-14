@@ -1,134 +1,136 @@
 /* === Conteneur principal === */
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(72px, 10*var(--u), 140px), 1fr));
-    gap: var(--gap);
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    /* espace entre les planètes */
-    width: 100%;
-    padding: 10px 10px;
-    background-color: black;
-    position: relative;
-    z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(clamp(72px, 10 * var(--u), 140px), 1fr)
+  );
+  gap: var(--gap);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* espace entre les planètes */
+  width: 100%;
+  padding: 10px 10px;
+  background-color: black;
+  position: relative;
+  z-index: 10;
 }
 
 /* === Bloc planète === */
 .imageWrap {
-    position: relative;
-    width: 75px;
-    height: 60px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  position: relative;
+  width: 75px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  bottom: 25px;
 }
 
 .imageWrap:hover {
-    transform: scale(1.18);
+  transform: scale(1.18);
 }
 
 /* === Image === */
 .image {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-    background-color: #000;
-
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  background-color: #000;
 }
 
 /* === Overlay (titre + sous-titre au survol) === */
 .overlay {
-    position: absolute;
-    inset: 0;
-    /* couvre toute la planète */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.75);
-    /* voile discret */
-    opacity: 0;
-    /* caché par défaut */
-    transition: opacity 0.35s ease;
-    border-radius: 50%;
-    /* reste circulaire */
-    pointer-events: none;
-    /* n’empêche pas le hover */
+  position: absolute;
+  inset: 0;
+  /* couvre toute la planète */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  /* voile discret */
+  opacity: 0;
+  /* caché par défaut */
+  transition: opacity 0.35s ease;
+  border-radius: 50%;
+  /* reste circulaire */
+  pointer-events: none;
+  /* n’empêche pas le hover */
 }
 
 /* Apparition fluide du texte au survol */
 .imageWrap:hover .overlay {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* === Titre === */
 .title {
-    font-size: 0.5rem;
-    font-weight: 600;
-    color: #fff;
-    margin: 0;
-    text-align: center;
-    line-height: 1.2;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  text-align: center;
+  line-height: 1.2;
 }
 
 /* === Sous-titre === */
 .subtitle {
-    font-size: 0.45rem;
-    font-style: italic;
-    color: #ccc;
-    margin-top: 2px;
-    text-align: center;
-    line-height: 1.1;
+  font-size: 0.45rem;
+  font-style: italic;
+  color: #ccc;
+  margin-top: 2px;
+  text-align: center;
+  line-height: 1.1;
 }
 
 /* === Responsive === */
 @media (max-width: 768px) {
-    .container {
-        gap: 28px;
-        padding: 24px 8px;
-    }
+  .container {
+    gap: 28px;
+    padding: 24px 8px;
+  }
 
-    .imageWrap {
-        width: 74px;
-        height: 74px;
-    }
+  .imageWrap {
+    width: 74px;
+    height: 74px;
+  }
 
-    .title {
-        font-size: 0.52rem;
-    }
+  .title {
+    font-size: 0.52rem;
+  }
 
-    .subtitle {
-        font-size: 0.4rem;
-    }
+  .subtitle {
+    font-size: 0.4rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .container {
-        gap: 20px;
-        padding: 18px 6px;
-    }
+  .container {
+    gap: 20px;
+    padding: 18px 6px;
+  }
 
-    .imageWrap {
-        width: 64px;
-        height: 64px;
-    }
+  .imageWrap {
+    width: 64px;
+    height: 64px;
+  }
 
-    .title {
-        font-size: 0.48rem;
-    }
+  .title {
+    font-size: 0.48rem;
+  }
 
-    .subtitle {
-        font-size: 0.38rem;
-    }
+  .subtitle {
+    font-size: 0.38rem;
+  }
 }
 
 /* Accessibilité : moins d’animation si demandé par l’utilisateur */
 @media (prefers-reduced-motion: reduce) {
-
-    .imageWrap,
-    .overlay {
-        transition: none;
-    }
+  .imageWrap,
+  .overlay {
+    transition: none;
+  }
 }

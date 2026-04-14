@@ -147,9 +147,9 @@ export default function Presentation() {
       <main className={styles.main}>
         <h1 className={styles.h1}>Quelques mots de votre Cosmic Dev Girl ✨</h1>
         <h2 className={styles.h2}>
-          Cliquez sur mon avatar, vous en saurez plus!
+          Cliquez sur les différentes cartes de mon avatar, vous en saurez plus
+          !
         </h2>
-
         <section className={styles.cardsGrid}>
           {cards.map((card, index) => (
             <Cartes

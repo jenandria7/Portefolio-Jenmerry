@@ -14,14 +14,13 @@
   height: 120px;
   margin-bottom: 4px;
   margin-top: 65px;
-
 }
 
 .h2 {
   margin-top: 0px;
   margin-left: 11px;
   line-height: 0;
-
+  position: fixed;
   color: white;
   font-family: "ZTB";
   font-size: 19px;

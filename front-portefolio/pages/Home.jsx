@@ -42,6 +42,8 @@ export default function Home() {
             alt="Jen Andria"
             className={styles.jen}
           />
+          <br />
+          <br />
           <h2 className={styles.h2}>
             Bienvenue dans l'univers d'une passionnée de dev.
           </h2>

@@ -12,7 +12,8 @@ export default function Presentation() {
         />
       ),
       back: (
-        <div>
+        <div className={styles.titre}>
+          <h1>Les Origines</h1>
           <p>
             Je vous invite à travers ce site à découvrir toutes les facettes de
             ma personnalité. De nature pudique, créer à travers un écran est
@@ -50,7 +51,8 @@ export default function Presentation() {
         />
       ),
       back: (
-        <div>
+        <div className={styles.titre}>
+          <h1>L'inspiration</h1>
           <p>
             Avec des nouveaux écrins de technologie de nouveau horizons se
             présageaient : les films, l’actualité, les tendances derrière ses
@@ -104,6 +106,7 @@ export default function Presentation() {
       ),
       back: (
         <div>
+          <h1 className={styles.titre}>La quête</h1>
           <p>
             Ma contribution est de faire qu’aujourd’hui soit plus précieux,
             poétique, artistique, unique, afin que demain tous les projets
@@ -145,7 +148,7 @@ export default function Presentation() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1 className={styles.h1}>Quelques mots de votre Cosmic Dev Girl ✨</h1>
+        <h1 className={styles.h1}>Quelques mots de votre Dev cosmic Girl ✨</h1>
         <h2 className={styles.h2}>
           Cliquez sur les différentes cartes de mon avatar, vous en saurez plus
           !

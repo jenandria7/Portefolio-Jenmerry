@@ -5,12 +5,12 @@ body {
   min-height: 100vh;
 }
 
-
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 @font-face {
@@ -29,14 +29,14 @@ body {
 
 :root {
   /* unité fluide stable (mieux que vmin sur ultra-wide) */
-  --u: clamp(8px, calc((1vw + 1vh)/2), 22px);
+  --u: clamp(8px, calc((1vw + 1vh) / 2), 22px);
 
   /* échelles réutilisables */
-  --gap: clamp(10px, 1.6*var(--u), 28px);
-  --fs-xs: clamp(10px, 1.3*var(--u), 13px);
-  --fs-sm: clamp(12px, 1.6*var(--u), 16px);
-  --fs-md: clamp(14px, 2.2*var(--u), 22px);
-  --fs-lg: clamp(18px, 3.2*var(--u), 40px);
+  --gap: clamp(10px, 1.6 * var(--u), 28px);
+  --fs-xs: clamp(10px, 1.3 * var(--u), 13px);
+  --fs-sm: clamp(12px, 1.6 * var(--u), 16px);
+  --fs-md: clamp(14px, 2.2 * var(--u), 22px);
+  --fs-lg: clamp(18px, 3.2 * var(--u), 40px);
 }
 
 /* reset utile */

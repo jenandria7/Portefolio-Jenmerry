@@ -2,13 +2,25 @@ import { useEffect, useState, useRef } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import styles from "../styles/PopupEntree.module.css";
+import HorizontalDatePicker from "../composants/DatePicker/HorizontalDatePicker";
+
+// URL de l'API sortie dans une variable d'environnement (fallback en local)
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3002";
 
 export default function PopupEntree({ onMusicSelected }) {
+  const [dateNaissance, setDateNaissance] = useState(null);
+  const [signeAstro, setSigneAstro] = useState("");
   const [open, setOpen] = useState(false);
   const [artist, setArtist] = useState("");
   const [title, setTitle] = useState("");
   const [mood, setMood] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const didRun = useRef(false);
+
+  const handleDateChange = ({ dateNaissance, signeAstro }) => {
+    setDateNaissance(dateNaissance);
+    setSigneAstro(signeAstro);
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -34,16 +46,28 @@ export default function PopupEntree({ onMusicSelected }) {
   };
 
   const handleSubmit = async () => {
+    if (isSubmitting) return; // évite le double-clic pendant une soumission en cours
+
+    if (!dateNaissance) {
+      alert("Choisis ta date de naissance 🙂");
+      return;
+    }
+
     if (!mood) {
       alert("Choisis ton mood 🙂");
       return;
     }
 
     const query = `${artist} ${title}`.trim();
-    if (!query) return;
+    if (!query) {
+      alert("Renseigne l'artiste et/ou le titre de ta chanson 🙂");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
-      const url = `http://localhost:3002/api/youtube/search?q=${encodeURIComponent(
+      const url = `${API_URL}/api/youtube/search?q=${encodeURIComponent(
         query,
       )}&maxResults=1`;
       const res = await fetch(url);
@@ -75,7 +99,7 @@ export default function PopupEntree({ onMusicSelected }) {
       const sessionId = localStorage.getItem("sessionId");
 
       // ✅ ENREGISTREMENT MONGO
-      const saveRes = await fetch("http://localhost:3002/api/popup", {
+      const saveRes = await fetch(`${API_URL}/api/popup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -85,6 +109,8 @@ export default function PopupEntree({ onMusicSelected }) {
           videoId,
           videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
           sessionId,
+          dateNaissance,
+          signeAstro,
         }),
       });
 
@@ -100,6 +126,8 @@ export default function PopupEntree({ onMusicSelected }) {
     } catch (err) {
       console.error(err);
       alert("Erreur réseau : back indisponible ou CORS.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -113,9 +141,11 @@ export default function PopupEntree({ onMusicSelected }) {
         justifyContent: "center",
         alignItems: "center",
         background: "white",
-        width: "390px",
-        height: "520px",
+        width: "360px",
+        padding: 0,
+        transform: "translateX(5px)",
       }}
+      className={styles.main}
     >
       <div className={styles.container}>
         <img
@@ -125,6 +155,15 @@ export default function PopupEntree({ onMusicSelected }) {
         />
 
         <div className={styles.body}>
+          <h1>FAISONS DE TA VISITE UNE EXPERIENCE UNIQUE !!</h1>
+          <label className={styles.label}>
+            Quel est ta date de naissance ?
+          </label>
+          <HorizontalDatePicker
+            minYear={1930}
+            maxYear={2020}
+            onChange={handleDateChange}
+          />
           <label className={styles.label}>
             Dans quel mood es-tu, aujourd’hui ?
           </label>
@@ -164,9 +203,19 @@ export default function PopupEntree({ onMusicSelected }) {
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          <button className={styles.button} onClick={handleSubmit}>
-            Continuer <br />
-            (Mets le son 🎵)
+          <button
+            className={styles.button}
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              "Chargement..."
+            ) : (
+              <>
+                Continuer <br />
+                (Mets le son 🎵)
+              </>
+            )}
           </button>
         </div>
       </div>

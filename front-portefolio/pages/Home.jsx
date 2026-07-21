@@ -12,7 +12,10 @@ export default function Home() {
 
   return (
     <div>
-      <PopupEntree onMusicSelected={setVideoId} />
+      <PopupEntree
+        onMusicSelected={setVideoId}
+        className={styles.PopupEntree}
+      />
       <MusicPlayer videoId={videoId} />
       {/* Vidéo réellement en arrière-plan */}
       <video

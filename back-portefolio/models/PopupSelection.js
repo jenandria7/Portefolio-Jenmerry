@@ -9,6 +9,8 @@ const PopupSelectionSchema = new mongoose.Schema(
     videoId: String,
     videoUrl: String,
     sessionId: String,
+    dateNaissance: Date,
+    signeAstro: String,
   },
   { timestamps: true },
 );

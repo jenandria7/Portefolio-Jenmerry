@@ -6,9 +6,25 @@ const router = Router();
 // POST /api/popup -> enregistre une sélection de popup
 router.post("/", async (req, res) => {
   try {
-    const { mood, artist, title, videoId, videoUrl, sessionId } = req.body;
+    const {
+      mood,
+      artist,
+      title,
+      videoId,
+      videoUrl,
+      sessionId,
+      dateNaissance,
+      signeAstro,
+    } = req.body;
 
-    if (!mood && !artist && !title && !videoId) {
+    if (
+      !mood &&
+      !artist &&
+      !title &&
+      !videoId &&
+      !dateNaissance &&
+      !signeAstro
+    ) {
       return res.status(400).json({ message: "Données manquantes" });
     }
 
@@ -22,6 +38,8 @@ router.post("/", async (req, res) => {
       videoId,
       videoUrl,
       sessionId,
+      dateNaissance,
+      signeAstro,
     });
 
     return res.status(201).json(created);

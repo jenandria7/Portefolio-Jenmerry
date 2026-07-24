@@ -1,5 +1,5 @@
-import '../styles/globals.css';
-import Head from 'next/head';
+import "../styles/globals.css";
+import Head from "next/head";
 
 function App({ Component, pageProps }) {
   return (
@@ -7,6 +7,7 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Portefolio de Jen</title>
       </Head>
+
       <Component {...pageProps} />
     </>
   );

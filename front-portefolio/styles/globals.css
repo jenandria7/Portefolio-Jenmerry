@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.pageFade {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
 html,
 body {
   margin: 0;

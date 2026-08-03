@@ -38,8 +38,8 @@
   border: none;
   border-radius: 0.5rem;
   padding: 0.2rem 0.3rem;
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   background: #fff;
   color: #171717;
 }
@@ -63,7 +63,7 @@
   border: none;
   padding: 0;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #737373;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -147,7 +147,7 @@
   font-size: 12px;
   color: black;
   font-weight: 600;
-  margin-top: 0.6rem;
+  margin-bottom: 25px;
 }
 
 /* --- Accessibilité : cache visuellement mais garde pour lecteurs d'écran --- */

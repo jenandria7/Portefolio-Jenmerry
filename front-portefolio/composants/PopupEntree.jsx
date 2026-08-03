@@ -141,7 +141,8 @@ export default function PopupEntree({ onMusicSelected }) {
         justifyContent: "center",
         alignItems: "center",
         background: "white",
-        width: "360px",
+        width: "300px",
+        heigth: "150px",
         padding: 0,
         transform: "translateX(5px)",
       }}
@@ -156,9 +157,7 @@ export default function PopupEntree({ onMusicSelected }) {
 
         <div className={styles.body}>
           <h1>FAISONS DE TA VISITE UNE EXPERIENCE UNIQUE !!</h1>
-          <label className={styles.label}>
-            Quel est ta date de naissance ?
-          </label>
+          {/* <label className={styles.label}></label> */}
           <HorizontalDatePicker
             minYear={1930}
             maxYear={2020}
@@ -167,7 +166,6 @@ export default function PopupEntree({ onMusicSelected }) {
           <label className={styles.label}>
             Dans quel mood es-tu, aujourd’hui ?
           </label>
-
           <div className={styles.moodOptions}>
             {["soucieux", "énervé", "enthousiaste", "rêveur", "curieux"].map(
               (m) => (

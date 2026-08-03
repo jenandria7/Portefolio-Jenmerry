@@ -237,6 +237,18 @@ export default function HorizontalDatePicker({
 
   return (
     <div className={styles.wrapper}>
+      <p className={styles.selectedLabel}>
+        {selected ? (
+          <>
+            Je suis né(e) le {formatDateFr(selected)}.
+            <br />
+            J'ai {getAge(selected)} ans et je suis du signe{" "}
+            {getZodiacSign(selected)}.
+          </>
+        ) : (
+          "Sélectionne ta date de naissance ..."
+        )}
+      </p>
       {/* --- Annonce vocale du mois affiché (lecteurs d'écran) --- */}
       <p aria-live="polite" className={styles.srOnly}>
         {CALENDAR_MONTHS[viewMonth]} {viewYear}
@@ -308,19 +320,6 @@ export default function HorizontalDatePicker({
           );
         })}
       </div>
-
-      <p className={styles.selectedLabel}>
-        {selected ? (
-          <>
-            Je suis né(e) le {formatDateFr(selected)}.
-            <br />
-            J'ai {getAge(selected)} ans et je suis du signe{" "}
-            {getZodiacSign(selected)}.
-          </>
-        ) : (
-          "Sélectionne ta date de naissance ..."
-        )}
-      </p>
     </div>
   );
 }

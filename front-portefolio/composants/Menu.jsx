@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/Menu.module.css";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Menu() {
   const images = {
@@ -40,9 +41,21 @@ export default function Menu() {
       img: "/images/planets/Neptune.png",
     },
   };
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <section className={styles.container}>
+    <section
+      className={styles.container}
+      className={`${styles.container} ${visible ? styles.show : styles.hide}`}
+    >
       {Object.entries(images).map(([title, data], index) => (
         <Link key={index} href={data.href} className={styles.imageWrap}>
           <Image
